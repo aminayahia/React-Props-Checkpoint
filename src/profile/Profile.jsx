@@ -1,23 +1,34 @@
+
 import PropTypes from "prop-types";
+import img3 from './images/img3.jpg';
+import {Card , Button} from 'react-bootstrap';
 const Profil = (props) =>{
-    const Style={color:"red"}
+   // const Style={color:"red"}
+console.log(props)
+ 
     return( 
-        <div style={Style}>
-            <h3>name: {props.fullName}</h3>
-            <h3>bio: {props.bio}</h3>
-            <h3>profession: {props.profession}</h3>
-            {props.children}<br />
-            <a onClick={props.handelClick}>Click</a>
+        <div /*style={Style}*/>
+            <Card style={{ width: '18rem' }}>
+                <Card.Img variant="top" src={props.src} />
+                <Card.Body>
+                    <Card.Title>{props.fullName}</Card.Title>
+                    <Card.Text>
+                    {props.profession}
+                    </Card.Text>
+                    <Button onClick={props.handelClick(props.fullName)}>Click</Button>
+                </Card.Body>
+            </Card>
         </div>
     )
 }
 Profil.defaultProps = {
-    name: "amina",
+    fullName: "amina",
     bio: "bio",
-    profession: "profession"
+    profession: "profession",
+    src:{img3}
    };
 Profil.propTypes = {
-    name: PropTypes.string,
+    fullName: PropTypes.string,
     bio: PropTypes.string,
     profession: PropTypes.string
    };   
